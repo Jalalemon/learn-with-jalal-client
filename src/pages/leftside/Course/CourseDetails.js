@@ -1,11 +1,16 @@
 import React from 'react';
+import { useLoaderData } from 'react-router-dom';
+import SingleDetail from './SingleDetail';
+
 
 const CourseDetails = () => {
-    return (
-        <div>
-            <h1> course details</h1>
-        </div>
-    );
-};
-
+    const detail = useLoaderData();
+    console.log(detail);
+   return(
+    <div>
+        {
+            detail.map(singleData => <SingleDetail key={singleData.id} singleData={singleData}></SingleDetail>)
+        }
+    </div>
+   )}
 export default CourseDetails;

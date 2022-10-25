@@ -1,6 +1,6 @@
 import React from 'react';
 import { useContext } from 'react';
-import { Image } from 'react-bootstrap';
+import { Button, Image } from 'react-bootstrap';
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -9,18 +9,34 @@ import { FaUserAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
 const Header = () => {
-    const {user} = useContext(AuthContext)
+    const {user, logOut} = useContext(AuthContext)
     console.log(user);
+
+    const handleLogOut = () => {
+        logOut()
+        .then(() => {})
+        .catch(errr => console.error(errr))
+    }
+
+
     return (
       <div className="mb-5">
         <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
           <Container>
-            <Navbar.Brand href="#home">Learn with Jalal</Navbar.Brand>
+            <Navbar.Brand href="#home">
+              <h3>Learn with Jalal</h3>
+            </Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="me-auto">
                 <Nav.Link href="#features">
-                  <Link to="/">All Course</Link>{" "}
+                  <Link
+                    className="text-white variant"
+                    variant="outline-light"
+                    to="/"
+                  >
+                    <h4> All Course</h4>
+                  </Link>{" "}
                 </Nav.Link>
                 <Nav.Link href="#pricing">Pricing</Nav.Link>
                 <NavDropdown title="All Course" id="collasible-nav-dropdown">
@@ -38,12 +54,35 @@ const Header = () => {
                 </NavDropdown>
               </Nav>
               <Nav>
-                <Nav.Link href="#deets">{user?.displayName} </Nav.Link>
+                <>
+                  {user?.uid ? (
+                    <>
+                      <h5 className="me-2"> {user?.displayName}</h5>
+                      <Button variant="outline-light" onClick={handleLogOut}>
+                        logout
+                      </Button>
+                    </>
+                  ) : (
+                    <>
+                      <Link to="/login">
+                        <Button variant="light">Login</Button>{" "}
+                      </Link>
+                      <Link to="/register">
+                        <Button variant="light"> Register</Button>{" "}
+                      </Link>
+                    </>
+                  )}{" "}
+                </>
                 <Nav.Link eventKey={2} href="#memes">
-                  {
-                    user?.photoURL?
-                   <Image style={{height: '40px'}} roundedCircle src={user?.photoURL}></Image> : <FaUserAlt></FaUserAlt>
-                  }
+                  {user?.photoURL ? (
+                    <Image
+                      style={{ height: "40px" }}
+                      roundedCircle
+                      src={user?.photoURL}
+                    ></Image>
+                  ) : (
+                    <FaUserAlt></FaUserAlt>
+                  )}
                 </Nav.Link>
               </Nav>
             </Navbar.Collapse>
