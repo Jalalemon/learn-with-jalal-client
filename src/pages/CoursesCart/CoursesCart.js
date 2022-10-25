@@ -5,12 +5,12 @@ const CoursesCart = ({singleCourse}) =>{
     console.log(singleCourse);
     const { balance, address, about, name, picture } = singleCourse;
     return (
-      <Card style={{ width: "28rem" }}>
+      <Card >
         <Card.Img variant="top" src={picture} />
         <Card.Body>
           <Card.Title>name: {name}</Card.Title>
           <Card.Text> {about}</Card.Text>
-          <Button variant="primary">Go somewhere</Button>
+          <Button variant="primary">Get premium access</Button>
         </Card.Body>
       </Card>
     );
