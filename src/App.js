@@ -5,6 +5,8 @@ import MainPage from './layOut/MainPage';
 import Home from './pages/home/Home';
 import Course from './pages/leftside/Course/Course';
 import CourseDetails from './pages/leftside/Course/CourseDetails';
+import Login from './Authuntication/Login/Login';
+import Register from './Authuntication/Register/Register';
 
 function App() {
   const routes = createBrowserRouter([
@@ -20,15 +22,21 @@ function App() {
         {
           path: "/course/:id",
           element: <Course></Course>,
-          loader: ({ params }) =>
-            fetch(`http://localhost:5000/index/${params.id}`),
+          loader: ({ params }) => fetch(`http://localhost:5000/index/${params.id}`),
         },
         {
           path: '/coursedetails/:id',
           element: <CourseDetails></CourseDetails>,
-          loader: ({params}) => {
-            fetch(`http://localhost:5000/allCourse/${params.id}`);
-          }
+          loader: ({params}) => fetch(`http://localhost:5000/allCourse/${params.id}`)
+        
+        },
+        {
+          path: '/login',
+          element: <Login></Login>
+        },
+        {
+          path: '/register',
+          element: <Register></Register>
         },
       ],
     },

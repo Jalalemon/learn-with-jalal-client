@@ -1,11 +1,18 @@
 import React from 'react';
-
-const CoursesCart = ({singleCourse}) => {
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+const CoursesCart = ({singleCourse}) =>{
     console.log(singleCourse);
+    const { balance, address, about, name, picture } = singleCourse;
     return (
-        <div>
-            <h2> {singleCourse.company} </h2>
-        </div>
+      <Card style={{ width: "28rem" }}>
+        <Card.Img variant="top" src={picture} />
+        <Card.Body>
+          <Card.Title>name: {name}</Card.Title>
+          <Card.Text> {about}</Card.Text>
+          <Button variant="primary">Go somewhere</Button>
+        </Card.Body>
+      </Card>
     );
 };
 
