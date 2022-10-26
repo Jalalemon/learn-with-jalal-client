@@ -8,6 +8,7 @@ import CourseDetails from './pages/leftside/Course/CourseDetails';
 import Login from './Authuntication/Login/Login';
 import Register from './Authuntication/Register/Register';
 import Footer from './pages/footer/Footer';
+import Terms from './tersmsAndCondition/Terms';
 
 function App() {
   const routes = createBrowserRouter([
@@ -23,12 +24,21 @@ function App() {
         {
           path: "/course/:id",
           element: <Course></Course>,
-          loader: ({ params }) =>fetch(`http://localhost:5000/index/${params.id}`),
+          loader: ({ params }) =>
+            fetch(`http://localhost:5000/index/${params.id}`),
         },
         {
-          path: "/footer/:id",
-          element: <Footer></Footer>,
-          loader: ({ params }) => fetch(`http://localhost:5000/allCourse/${params.id}`),
+          path: "/coursedetails/:id",
+          element: <CourseDetails></CourseDetails>,
+          loader: ({ params }) =>
+            fetch(`http://localhost:5000/allCourse/${params.id}`
+            ),
+        },
+        {
+          path: "/course/:id",
+          element: <Course></Course>,
+          loader: ({ params }) =>
+            fetch(`http://localhost:5000/allCourse/${params.id}`),
         },
         {
           path: "/login",
@@ -37,6 +47,10 @@ function App() {
         {
           path: "/register",
           element: <Register></Register>,
+        },
+        {
+          path: "/terms",
+          element: <Terms></Terms>,
         },
       ],
     },

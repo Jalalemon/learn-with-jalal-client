@@ -1,10 +1,17 @@
 import React from 'react';
+import { useState } from 'react';
+import { Form } from 'react-bootstrap';
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Link } from 'react-router-dom';
 const CoursesCart = ({singleCourse}) =>{
+    const [accepted, setAccepted] = useState(false)
     console.log(singleCourse);
-    const { balance, address, about, name,_id, picture } = singleCourse;
+    const { balance, address, about, name,_id,id, picture } = singleCourse;
+
+    const handleAccepted = (event) =>{
+        setAccepted(event.target.checked)
+    }
     return (
       <Card>
         <Card.Img variant="top" src={picture} />
@@ -20,9 +27,23 @@ const CoursesCart = ({singleCourse}) =>{
             ) : (
               <p>{about} </p>
             )}
+            <Form.Group className="mb-3" controlId="formBasicCheckbox">
+              <Form.Check
+                type="checkbox"
+                onClick={handleAccepted}
+                label={
+                  <>
+                    {" "}
+                    Accept<Link to="/terms"> Terms and condition</Link>{" "}
+                  </>
+                }
+              />
+            </Form.Group>
           </Card.Text>
-          <Link to={`/allCourse/${_id}`}>
-            <Button variant="primary">Get premium access</Button>
+          <Link to={`/course/${_id}`}>
+            <Button disabled={!accepted} variant="primary">
+              Get premium access
+            </Button>
           </Link>
         </Card.Body>
       </Card>

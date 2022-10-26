@@ -7,6 +7,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { FaUserAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import img from './images.jpeg'
 import { AuthContext } from '../../Contexts/AuthProvider';
 const Header = () => {
     const {user, logOut} = useContext(AuthContext)
@@ -23,8 +24,13 @@ const Header = () => {
       <div className="mb-5">
         <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
           <Container>
+              <Image
+                style={{ height: "40px" }}
+                roundedCircle
+                src={img}
+              ></Image>
             <Navbar.Brand href="#home">
-              <h3>Learn with Jalal</h3>
+              <h3 className='ms-4'>Learn with Jalal</h3>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
@@ -35,10 +41,12 @@ const Header = () => {
                     variant="outline-light"
                     to="/"
                   >
-                    <h4> All Course</h4>
+                    <h5> All Course</h5>
                   </Link>{" "}
                 </Nav.Link>
-                <Nav.Link href="#pricing">Pricing</Nav.Link>
+                <Nav.Link href="#pricing">Blog</Nav.Link>
+                <Nav.Link href="#pricing">FAQ</Nav.Link>
+                <Nav.Link href="#pricing">Dark</Nav.Link>
                 <NavDropdown title="All Course" id="collasible-nav-dropdown">
                   <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.2">
@@ -56,16 +64,16 @@ const Header = () => {
               <Nav>
                 <>
                   {user?.uid ? (
-                    <>
+                    <div className='d-flex align-items-center'>
                       <h5 className="me-2"> {user?.displayName}</h5>
                       <Button variant="outline-light" onClick={handleLogOut}>
                         logout
                       </Button>
-                    </>
+                    </div>
                   ) : (
                     <>
                       <Link to="/login">
-                        <Button variant="light">Login</Button>{" "}
+                        <Button className='mb-2' variant="light">Login</Button>{" "}
                       </Link>
                       <Link to="/register">
                         <Button variant="light"> Register</Button>{" "}

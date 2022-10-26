@@ -1,15 +1,17 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import Fulldetails from './Fulldetails';
 import SingleDetail from './SingleDetail';
 
 
 const CourseDetails = () => {
-    const detail = useLoaderData();
-    console.log(detail);
+    const details = useLoaderData();
+    console.log(details);
    return(
     <div>
+        <h2>details{details.length} </h2>
         {
-            detail.map(singleData => <SingleDetail key={singleData.id} singleData={singleData}></SingleDetail>)
+            details.map(fullData => <Fulldetails key={fullData.id} fullData={fullData}></Fulldetails>)
         }
     </div>
    )}
