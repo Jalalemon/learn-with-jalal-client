@@ -13,7 +13,7 @@ const CoursesCart = ({singleCourse}) =>{
         setAccepted(event.target.checked)
     }
     return (
-      <Card>
+      <Card >
         <Card.Img variant="top" src={picture} />
         <Card.Body>
           <Card.Title>name: {name}</Card.Title>

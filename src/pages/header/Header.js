@@ -9,6 +9,7 @@ import { FaUserAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import img from './images.jpeg'
 import { AuthContext } from '../../Contexts/AuthProvider';
+import { toast, ToastContainer } from 'react-toastify';
 const Header = () => {
     const {user, logOut} = useContext(AuthContext)
     console.log(user);
@@ -16,6 +17,7 @@ const Header = () => {
     const handleLogOut = () => {
         logOut()
         .then(() => {})
+        toast('Logged out successFully')
         .catch(errr => console.error(errr))
     }
 
@@ -77,6 +79,7 @@ const Header = () => {
                       <h5 className="me-2"> {user?.displayName}</h5>
                       <Button variant="outline-light" onClick={handleLogOut}>
                         logout
+                        <ToastContainer></ToastContainer>
                       </Button>
                     </div>
                   ) : (
@@ -86,6 +89,7 @@ const Header = () => {
                       </Link>
                       <Link to="/register">
                         <Button variant="light"> Register</Button>{" "}
+
                       </Link>
                     </>
                   )}{" "}

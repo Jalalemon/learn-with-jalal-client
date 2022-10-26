@@ -7,6 +7,9 @@ import AuthProvider, { AuthContext } from '../../Contexts/AuthProvider';
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { ButtonGroup } from 'react-bootstrap';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
+  import { ToastContainer, toast } from "react-toastify";
+  import "react-toastify/dist/ReactToastify.css";
+
 const Login = () => {
 const { signIn,gitProvider, providerLogin } = useContext(AuthContext);
 const [error, setError] = useState('');
@@ -22,6 +25,7 @@ const from = location.state?.from?.pathname || '/';
        providerLogin(gProvider)
          .then((result) => {
            const user = result.user;
+             toast.success("Wow! Google logged Successfully.");
            console.log(user);
          })
          .catch((error) => console.error(error));
@@ -31,6 +35,7 @@ const from = location.state?.from?.pathname || '/';
         gitProvider(gitpro)
         .then(result => {
             const user = result.user;
+             toast.success("Wow! Github logged Successfully.");
             console.log(user)
         })
         .catch(error => console.error(error))
@@ -50,6 +55,7 @@ const from = location.state?.from?.pathname || '/';
             form.reset();
             setError('');
             navigate('/', {replace: true});
+             toast.success("Wow! logged Successfully.");
           })
           .catch((error) => {
             console.error(error);
@@ -100,10 +106,12 @@ const from = location.state?.from?.pathname || '/';
               variant="outline-dark"
             >
               {" "}
-              <FaGoogle></FaGoogle> login with google
+              <FaGoogle></FaGoogle> login with google{" "}
+              <ToastContainer></ToastContainer>
             </Button>
             <Button onClick={handleGitSign} variant="outline-primary">
-              <FaGithub></FaGithub> login with github
+              <FaGithub></FaGithub> login with github{" "}
+              <ToastContainer></ToastContainer>
             </Button>
           </ButtonGroup>
         </div>
