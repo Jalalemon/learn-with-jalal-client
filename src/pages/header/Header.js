@@ -15,9 +15,9 @@ const Header = () => {
     console.log(user);
 
     const handleLogOut = () => {
+        toast('logout successfully')
         logOut()
         .then(() => {})
-        toast('Logged out successFully')
         .catch(errr => console.error(errr))
     }
 

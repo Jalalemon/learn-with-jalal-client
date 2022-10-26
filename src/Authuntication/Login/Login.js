@@ -54,7 +54,7 @@ const from = location.state?.from?.pathname || '/';
             console.log(user);
             form.reset();
             setError('');
-            navigate('/', {replace: true});
+            navigate(from, {replace: true});
              toast.success("Wow! logged Successfully.");
           })
           .catch((error) => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, Navigate, useLoaderData } from 'react-router-dom';
 import CoursesCart from '../CoursesCart/CoursesCart';
 import CourseDetails from '../leftside/Course/CourseDetails';
 
@@ -8,6 +8,7 @@ const Home = () => {
     
     return (
         <div>
+           
             <h3>home {allCourse.length}</h3>
             
             {
