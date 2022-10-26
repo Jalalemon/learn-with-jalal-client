@@ -67,7 +67,7 @@ function App() {
         },
         {
           path: "*",
-          element: <div> 404: oppps! Rout not found </div>,
+          element: <h3 className='mx-auto'> 404: oppps! Rout not found </h3>,
         },
       ],
     },
