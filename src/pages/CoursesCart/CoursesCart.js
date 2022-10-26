@@ -22,7 +22,7 @@ const CoursesCart = ({singleCourse}) =>{
             {about.length > 200 ? (
               <p>
                 {about.slice(0, 200) + "..."}{" "}
-                <Link to={`/allCourse/${_id}`}>reademore</Link>{" "}
+                <Link to={`/coursedetails/${_id}`}>reademore</Link>{" "}
               </p>
             ) : (
               <p>{about} </p>
@@ -40,10 +40,14 @@ const CoursesCart = ({singleCourse}) =>{
               />
             </Form.Group>
           </Card.Text>
-          <Link to={`/course/${_id}`}>
+          <Link
+            className="d-flex align-items-center justify-content-between"
+            to={`/coursedetails/${_id}`}
+          >
             <Button disabled={!accepted} variant="primary">
               Get premium access
             </Button>
+            <h5 className="text-primary">Price: {balance}</h5>
           </Link>
         </Card.Body>
       </Card>

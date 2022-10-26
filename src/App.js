@@ -9,6 +9,7 @@ import Login from './Authuntication/Login/Login';
 import Register from './Authuntication/Register/Register';
 import Footer from './pages/footer/Footer';
 import Terms from './tersmsAndCondition/Terms';
+import Blog from './Blogs/Blog';
 
 function App() {
   const routes = createBrowserRouter([
@@ -34,12 +35,12 @@ function App() {
             fetch(`http://localhost:5000/allCourse/${params.id}`
             ),
         },
-        {
-          path: "/course/:id",
-          element: <Course></Course>,
-          loader: ({ params }) =>
-            fetch(`http://localhost:5000/allCourse/${params.id}`),
-        },
+        // {
+        //   path: "/course/:id",
+        //   element: <Course></Course>,
+        //   loader: ({ params }) =>
+        //     fetch(`http://localhost:5000/allCourse/${params.id}`),
+        // },
         {
           path: "/login",
           element: <Login></Login>,
@@ -51,6 +52,14 @@ function App() {
         {
           path: "/terms",
           element: <Terms></Terms>,
+        },
+        {
+          path: "/blog",
+          element: <Blog></Blog>,
+        },
+        {
+          path: "*",
+          element: <div> 404: oppps! Rout not found </div>,
         },
       ],
     },

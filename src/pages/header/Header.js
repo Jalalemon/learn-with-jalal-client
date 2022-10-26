@@ -41,10 +41,19 @@ const Header = () => {
                     variant="outline-light"
                     to="/"
                   >
-                    <h5> All Course</h5>
+                    <h6> All Course</h6>
                   </Link>{" "}
                 </Nav.Link>
-                <Nav.Link href="#pricing">Blog</Nav.Link>
+                <Nav.Link href="#features">
+                  <Link
+                    className="text-white variant"
+                    variant="outline-light"
+                    to="/blog"
+                  >
+                    <h6> Blog</h6>
+                  </Link>{" "}
+                </Nav.Link>
+               
                 <Nav.Link href="#pricing">FAQ</Nav.Link>
                 <Nav.Link href="#pricing">Dark</Nav.Link>
                 <NavDropdown title="All Course" id="collasible-nav-dropdown">
