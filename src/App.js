@@ -10,6 +10,7 @@ import Register from './Authuntication/Register/Register';
 import Footer from './pages/footer/Footer';
 import Terms from './tersmsAndCondition/Terms';
 import Blog from './Blogs/Blog';
+import PrivateRoute from './privateRoute/PrivateRoute';
 
 function App() {
   const routes = createBrowserRouter([
@@ -30,10 +31,13 @@ function App() {
         },
         {
           path: "/coursedetails/:id",
-          element: <CourseDetails></CourseDetails>,
+          element: (
+            <PrivateRoute>
+              <CourseDetails></CourseDetails>
+            </PrivateRoute>
+          ),
           loader: ({ params }) =>
-            fetch(`http://localhost:5000/allCourse/${params.id}`
-            ),
+            fetch(`http://localhost:5000/allCourse/${params.id}`),
         },
         // {
         //   path: "/course/:id",
@@ -55,7 +59,11 @@ function App() {
         },
         {
           path: "/blog",
-          element: <Blog></Blog>,
+          element: (
+            <PrivateRoute>
+              <Blog></Blog>
+            </PrivateRoute>
+          ),
         },
         {
           path: "*",

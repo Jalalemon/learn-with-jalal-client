@@ -4,6 +4,7 @@ import { Form } from 'react-bootstrap';
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Link } from 'react-router-dom';
+import PrivateRoute from '../../privateRoute/PrivateRoute';
 const CoursesCart = ({singleCourse}) =>{
     const [accepted, setAccepted] = useState(false)
     console.log(singleCourse);
@@ -13,7 +14,7 @@ const CoursesCart = ({singleCourse}) =>{
         setAccepted(event.target.checked)
     }
     return (
-      <Card >
+      <Card>
         <Card.Img variant="top" src={picture} />
         <Card.Body>
           <Card.Title>name: {name}</Card.Title>
@@ -40,15 +41,17 @@ const CoursesCart = ({singleCourse}) =>{
               />
             </Form.Group>
           </Card.Text>
-          <Link
-            className="d-flex align-items-center justify-content-between"
-            to={`/coursedetails/${_id}`}
-          >
-            <Button disabled={!accepted} variant="primary">
-              Get premium access
-            </Button>
-            <h5 className="text-primary">Price: {balance}</h5>
-          </Link>
+        
+            <Link
+              className="d-flex align-items-center justify-content-between"
+              to={`/coursedetails/${_id}`}
+            >
+              <Button disabled={!accepted} variant="primary">
+                Buy now
+              </Button>
+              <h5 className="text-primary">Price: {balance}</h5>
+            </Link>
+        
         </Card.Body>
       </Card>
     );
