@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import Fulldetails from './Fulldetails';
 import SingleDetail from './SingleDetail';
 import Button from 'react-bootstrap/Button';
@@ -29,10 +29,13 @@ const CourseDetails = () => {
              <h5 className="text-danger">Price: {balance}</h5>
            </Card.Text>
            <h5 className="text-primary">Registration ID: {registered}</h5>
-           <Button onClick={notify} variant="primary">
-             {" "}
-             <ToastContainer /> Go somewhere
-           </Button>
+           <Link to={`/coursedetails/${_id}`}>
+             <Button onClick={notify} variant="primary">
+               {" "}
+               <ToastContainer />
+               Go Details
+             </Button>
+           </Link>
 
            <p> Tags:{tags} </p>
          </Card.Body>

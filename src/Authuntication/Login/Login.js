@@ -26,6 +26,7 @@ const from = location.state?.from?.pathname || '/';
          .then((result) => {
            const user = result.user;
              toast.success("Wow! Google logged Successfully.");
+                navigate(from, { replace: true });
            console.log(user);
          })
          .catch((error) => console.error(error));
@@ -36,6 +37,7 @@ const from = location.state?.from?.pathname || '/';
         .then(result => {
             const user = result.user;
              toast.success("Wow! Github logged Successfully.");
+                navigate(from, { replace: true });
             console.log(user)
         })
         .catch(error => console.error(error))
