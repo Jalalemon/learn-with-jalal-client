@@ -14,10 +14,13 @@ import 'tippy.js/dist/tippy.css'; // optional
 import img from './images.jpeg'
 import { AuthContext } from '../../Contexts/AuthProvider';
 import { toast, ToastContainer } from 'react-toastify';
+import { useState } from 'react';
+import Toggle from '../../Toggle/Toggle';
+import Faq from '../../Faq/Faq';
 const Header = () => {
     const {user, logOut} = useContext(AuthContext)
     console.log(user);
-
+    const [isDark, setDark] = useState(() => false);
     const handleLogOut = () => {
         toast('logout successfully')
         logOut()
@@ -55,12 +58,18 @@ const Header = () => {
                     <h6> blog</h6>
                   </Link>{" "}
                 </Nav.Link>
-
-                <Nav.Link href="#pricing">
-                  {" "}
-                  FAQ
+                <Nav.Link href="#features">
+                  <Link
+                    className="text-white variant"
+                    variant="outline-light"
+                    to="/faq"
+                  >
+                    <h6> FAQ</h6>
+                  </Link>{" "}
                 </Nav.Link>
-                <Nav.Link href="#pricing">Dark</Nav.Link>
+
+               
+               
                 <NavDropdown title="All Course" id="collasible-nav-dropdown">
                   <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.2">
@@ -78,7 +87,7 @@ const Header = () => {
                   {user?.uid ? (
                     <div className="d-flex align-items-center">
                       <h5 className="me-2"> {user?.displayName}</h5>
-                      
+
                       <Button variant="outline-light" onClick={handleLogOut}>
                         logout
                         <ToastContainer></ToastContainer>
@@ -113,6 +122,7 @@ const Header = () => {
                   )}
                 </Nav.Link>
               </Nav>
+              <Toggle></Toggle>
             </Navbar.Collapse>
           </Container>
         </Navbar>

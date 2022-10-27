@@ -11,6 +11,7 @@ import Footer from './pages/footer/Footer';
 import Terms from './tersmsAndCondition/Terms';
 import Blog from './Blogs/Blog';
 import PrivateRoute from './privateRoute/PrivateRoute';
+import Faq from './Faq/Faq';
 
 function App() {
   const routes = createBrowserRouter([
@@ -21,13 +22,16 @@ function App() {
         {
           path: "/",
           element: <Home></Home>,
-          loader: () => fetch("http://localhost:5000/allCourse"),
+          loader: () =>
+            fetch("https://learn-with-jalal-server.vercel.app/allCourse"),
         },
         {
           path: "/course/:id",
           element: <Course></Course>,
           loader: ({ params }) =>
-            fetch(`http://localhost:5000/index/${params.id}`),
+            fetch(
+              `https://learn-with-jalal-server.vercel.app/index/${params.id}`
+            ),
         },
         {
           path: "/coursedetails/:id",
@@ -37,7 +41,9 @@ function App() {
             </PrivateRoute>
           ),
           loader: ({ params }) =>
-            fetch(`http://localhost:5000/allCourse/${params.id}`),
+            fetch(
+              `https://learn-with-jalal-server.vercel.app/allCourse/${params.id}`
+            ),
         },
         // {
         //   path: "/course/:id",
@@ -48,6 +54,10 @@ function App() {
         {
           path: "/login",
           element: <Login></Login>,
+        },
+        {
+          path: "/faq",
+          element: <Faq></Faq>,
         },
         {
           path: "/register",
@@ -67,7 +77,7 @@ function App() {
         },
         {
           path: "*",
-          element: <h3 className='mx-auto'> 404: oppps! Rout not found </h3>,
+          element: <h3 className="mx-auto"> 404: oppps! Rout not found </h3>,
         },
       ],
     },
