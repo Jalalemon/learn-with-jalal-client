@@ -1,9 +1,9 @@
-# project name: Learn With Jalal.
-# 1. Creating react Router dom and bootsrap library framwork
+## project name: Learn With Jalal.
+### 1. Creating react Router dom and bootsrap library framwork
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## 2. Hosted Firebase and local server.
+### 2. Hosted Firebase and local server.
 
 [https://firebase.google.com/] cosole.firebase.com creating a web app. by install firebase. and hosted easily firebase.
 
