@@ -47,7 +47,7 @@ const CoursesCart = ({singleCourse}) =>{
               to={`/coursedetails/${_id}`}
             >
               <Button disabled={!accepted} variant="primary">
-                Buy now
+                <p>Get access</p>
               </Button>
               <h5 className="text-primary">Price: {balance}</h5>
             </Link>

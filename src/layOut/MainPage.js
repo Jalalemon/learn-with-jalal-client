@@ -28,7 +28,7 @@ const MainPage = () => {
             </Col>
           </Row>
         </Container>
-        <Footer></Footer>
+        {/* <Footer></Footer> */}
       </div>
     );
 };
