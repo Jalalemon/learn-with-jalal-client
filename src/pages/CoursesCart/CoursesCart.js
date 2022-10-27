@@ -4,6 +4,7 @@ import { Form } from 'react-bootstrap';
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Link } from 'react-router-dom';
+import { FaFileDownload, IconName } from "react-icons/fa";
 import PrivateRoute from '../../privateRoute/PrivateRoute';
 const CoursesCart = ({singleCourse}) =>{
     const [accepted, setAccepted] = useState(false)
@@ -15,6 +16,8 @@ const CoursesCart = ({singleCourse}) =>{
     }
     return (
       <Card>
+
+        <Button className='m-4 w-60 mx-auto'> Download pdf<FaFileDownload className='ms-2'></FaFileDownload> </Button>
         <Card.Img variant="top" src={picture} />
         <Card.Body>
           <Card.Title>name: {name}</Card.Title>
